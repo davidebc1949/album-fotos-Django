@@ -2,7 +2,12 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from album.models import Category, Photo
+from album.models import Category 
+from album.models import Photo
+
+import sys
+reload (sys)
+sys.setdefaultencoding('utf-8')
 # Register your models here.
 admin.site.register(Category)
 admin.site.register(Photo)

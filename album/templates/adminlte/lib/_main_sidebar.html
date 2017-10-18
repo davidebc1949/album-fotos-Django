@@ -1,0 +1,34 @@
+{% extends 'adminlte/lib/_main_sidebar.html' %}
+
+{% block nav_links %}
+    <li>
+        <a href="{% url 'category-list' %}">
+            <i class="fa fa-globe"></i> <span>Categoria</span>
+        </a>
+    </li>
+   
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-th"></i> <span>Fotos</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="{% url 'photo-list' %}">
+                        <i class="fa fa-camera-retro"></i>Subir Foto
+                    </a>
+                </li>
+           
+            
+            </ul>
+                <ul class="treeview-menu">   
+                    <li>
+                        <a href="{% url 'photo-create' %}">
+                            <i class="fa fa-toggle-up "></i> Crear Foto
+                        </a>
+                    </li>
+                </ul>
+        </li>
+{% endblock nav_links %}

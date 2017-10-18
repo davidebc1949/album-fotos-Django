@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block section %}
+
+    <h2>Category</h2>
+    <hr>
+{% endblock section %}
+
+{% block content %}
+
+    <h1><center><FONT FACE="times new roman" COLOR="#0174DF" SIZE=10>CATEGORIAS DE FOTOS </font></center></h1>
+
+    <div>
+        {% for c in object_list %}
+            <a href="{% url 'category-detail' c.pk %}">
+                {{ c.name }}
+            </a>
+        {% endfor %}
+    </div>
+{% endblock content %} 
