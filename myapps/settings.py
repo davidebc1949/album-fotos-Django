@@ -25,7 +25,12 @@ SECRET_KEY = '4wh*s=^&8u&x)eo-3cmncixmzst*mmcyjdf$c_jc$n5r7+xbzo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'davidbenavides@umariana.edu.co'
+EMAIL_HOST_PASSWORD = 'davidbenavides'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 
 # Application definition
@@ -35,11 +40,16 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'album',
+    'registration',
     'django_adminlte',
     'django_adminlte_theme',
+    'crispy_forms',
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -53,6 +63,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'myapps.urls'
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+SITE_ID=1
 
 TEMPLATES = [
     {
@@ -78,8 +92,13 @@ WSGI_APPLICATION = 'myapps.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'album',
+        'USER': 'David',
+        'PASSWORD':'ingsis601',
+        'HOST':'localhost',
+        'PORT': 5432,
+        'CHARSET': 'UTF8',
     }
 }
 

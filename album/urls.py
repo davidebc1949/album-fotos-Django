@@ -1,7 +1,8 @@
-from django.conf.urls import url
+from django.conf.urls import include, url
 from album import views 
 
 urlpatterns = [
+    
     url(r'^$', views.base, name='base'), 
     url(r'^category/$', views.category, name='category-list'), 
     url(r'^category/(\d+)/detail/$', views.category_detail,name='category-detail'), 
@@ -13,4 +14,5 @@ urlpatterns = [
     url(r'^photo/create/$', views.PhotoCreate.as_view(), name='photo-create'),
     #Delete
     url(r'^photo/(?P<pk>\d+)/delete/$', views.PhotoDelete.as_view(),name='photo-delete'), 
+    
 ] 
