@@ -48,6 +48,9 @@ INSTALLED_APPS = [
     'django_adminlte',
     'django_adminlte_theme',
     'crispy_forms',
+    'social_django', 
+    'rest_framework',
+    
     
     
 ]
@@ -60,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'myapps.urls'
@@ -67,6 +71,10 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 SITE_ID=1
+
+
+LOGIN_REDIRECT_URL ="/album"
+lOGOUT_URL = '/accounts/logout'
 
 TEMPLATES = [
     {
@@ -79,6 +87,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',  
+                'social_django.context_processors.login_redirect'
             ],
         },
     },
@@ -145,3 +155,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'media'),
 )
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_TWITTER_KEY = '1u6PFVSDcFU5scTE6PK9F4kQy'
+SOCIAL_AUTH_TWITTER_SECRET = 'QVXWHjB7WNjO5nK2PaODI3cPihyG6yOhLw6jRp8h7IUVvOChZl'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '2007392362830718'  
+SOCIAL_AUTH_FACEBOOK_SECRET = '17c41d5828993af311ca3a18186f4bdc'
